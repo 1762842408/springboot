@@ -45,7 +45,6 @@ public class TestController {
 		return "this is log test";
 	}
 	@RequestMapping("/config")
-
 	public String cofigTest() {
 		StringBuffer sb  = new StringBuffer();
 		sb.append(port).append("----")
