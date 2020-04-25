@@ -2,8 +2,11 @@ package com.example.demo.modules.test.service.impl;
 
 import java.util.List;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.modules.common.vo.Result;
 import com.example.demo.modules.common.vo.Result.ResultEnum;
@@ -50,5 +53,29 @@ public class CityServiceImpl implements CityService {
 		}
 		return result;
 	}
+
+	@Override
+	@Transactional
+	public Result<City> updateCity(City city) {
+		Result<City> result = new Result<City>(ResultEnum.SUCCESS.status,"Update success.");
+		
+			cityDao.updateCity(city);
+			result.setObject(city);
+			
+			return result;
+	}
+
+	@Override
+	public Result<Object> deleteCity(int cityId) {
+		Result<Object> result = new Result<>(ResultEnum.SUCCESS.status,"Delete success.");
+		try{
+			cityDao.deleteCity(cityId);
+		}catch(Exception e) {
+			result.setStatus(ResultEnum.FAILD.status);
+			result.setMessage(e.getMessage());
+		}
+		return result;
+	}
+	
 
 }
