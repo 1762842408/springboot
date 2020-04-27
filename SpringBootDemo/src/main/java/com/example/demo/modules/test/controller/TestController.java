@@ -1,11 +1,14 @@
 package com.example.demo.modules.test.controller;
 
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.modules.test.vo.ConfigBean;
@@ -68,5 +71,14 @@ public class TestController {
 	public String getAppDesc() {
 		return "Hello world,this is spring boot demo";
 		
+	}
+	
+	/**
+	 * http://127.0.0.1/api/test/appDesc?key=fuck
+	 */
+	@RequestMapping("/appDesc")
+	public String getAppDesc(HttpServletRequest request, @RequestParam String key) {
+		String value2 = request.getParameter("key");
+		return "Hello world, this is spring boot demo." + key + value2;
 	}
 }

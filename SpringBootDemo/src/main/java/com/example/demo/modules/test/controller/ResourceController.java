@@ -24,24 +24,24 @@ public class ResourceController {
 	@Autowired
 	private ResourceService resourceService;
 	
-	@RequestMapping("/roles/{roleId}")
+	@RequestMapping("/resources/{resourceId}")
 	public List<Resource> getCitiesByCountryId(@PathVariable int resourceId){
 		return resourceService.getUsersByResourceId(resourceId);
 	}
 	
-	@PostMapping(value="/role",consumes="application/json")
+	@PostMapping(value="/resource",consumes="application/json")
 	public Result<Resource> insertResource(@RequestBody Resource resource){
 		return resourceService.insertResource(resource);
 	}
 	
-	@PutMapping(value="/role",consumes="application/x-www-form-urlencoded")
-	public Result<Resource> updateRole(@ModelAttribute Resource resource){
+	@PutMapping(value="/resource",consumes="application/x-www-form-urlencoded")
+	public Result<Resource> updateResource(@ModelAttribute Resource resource){
 		return resourceService.updateResource(resource);
 		
 	}
 	
-	@DeleteMapping("/role/{roleId}")
-	public Result<Object> deleteCity(@PathVariable int resourceId){
+	@DeleteMapping("/resource/{resourceId}")
+	public Result<Object> deleteResource(@PathVariable int resourceId){
 		return resourceService.deleteResource(resourceId);
 	}
 }
