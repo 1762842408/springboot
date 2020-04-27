@@ -3,6 +3,7 @@ package com.example.demo.interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -30,7 +31,7 @@ public class UrlInterceptor implements HandlerInterceptor {
 		
 		String uri = request.getServletPath();
 		String template = (String) modelAndView.getModelMap().get("template");
-		if (template == null  || template == "") {
+		if (StringUtils.isBlank(template)) {
 			if (uri.startsWith("/")) {
 				uri = uri.substring(1);
 			}

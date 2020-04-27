@@ -67,6 +67,13 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 
+		
+		<!-- commons -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		</dependency>
+		
 		<!-- test -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
